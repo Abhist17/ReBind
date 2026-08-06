@@ -4,3 +4,5 @@ artifacts/
 cache/
 deployments.json
 *.log
+.claude/settings.local.json
+.claude/*.tmp.*
