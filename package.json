@@ -20,7 +20,7 @@
     "server": "node backend/server.js",
     "web": "npm --prefix frontend run dev",
     "web:build": "npm --prefix frontend run build",
-    "web:install": "npm --prefix frontend install"
+    "web:install": "npm --prefix frontend install --include=dev"
   },
   "keywords": [],
   "author": "",
