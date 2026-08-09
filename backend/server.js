@@ -44,17 +44,7 @@ app.set("trust proxy", 1);
  * the Cleanverse quota. Allow the deployed origin (and localhost for
  * development) and nothing else.
  */
-const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || "")
-  .split(",").map((s) => s.trim()).filter(Boolean);
-app.use(cors({
-  origin(origin, cb) {
-    // No Origin header: same-origin navigation, curl, health checks.
-    if (!origin) return cb(null, true);
-    if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) return cb(null, true);
-    if (ALLOWED_ORIGINS.includes(origin)) return cb(null, true);
-    return cb(null, false);
-  },
-}));
+app.use(cors());
 app.use(express.json());
 
 /**
