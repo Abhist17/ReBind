@@ -8,7 +8,7 @@
    nothing about the actual problem.
    ====================================================================== */
 
-const BASE = "";
+const BASE = import.meta.env.VITE_API_URL || "";
 
 /* ------------------------------------------------------------- demo session
    A BindingRegistry binding is permanent, so the demo's three wallets can only
