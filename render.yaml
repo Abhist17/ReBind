@@ -12,7 +12,11 @@ services:
     plan: starter # not `free`: the free tier sleeps after 15 minutes idle and
                   # cold-starts in ~30-60s, which is exactly when someone opens
                   # the link you sent them.
-    region: oregon
+    # Closest region to the people who will actually click the buttons. Every
+    # beat is a round trip to this service, so a demo driven from India on a US
+    # region pays ~250ms on each one. Change it if your audience is elsewhere;
+    # the region cannot be changed after the service is created.
+    region: singapore
 
     # npm ci --include=dev is load-bearing. The build compiles the contracts to
     # regenerate artifacts/ (gitignored, and the backend reads the ABIs from it
@@ -52,6 +56,12 @@ services:
         value: "20"
       - key: CV_CHAIN
         value: base
+      # The Cleanverse sandbox. This is also the hardcoded default in
+      # backend/cleanverse.js, but pinning it here means a change to that
+      # default can never silently move a deployed demo to a different
+      # environment.
+      - key: CV_BASE_URL
+        value: https://uatapi.cleanverse.com/api/cooperate
       - key: BRIDGE_ADVANCE
         value: "true"
       # Whether update_status freezes one wallet or a whole customerId. Leave
